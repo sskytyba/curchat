@@ -1,7 +1,7 @@
 package com.curchat.model;
 
 public enum CurrencySaleStatus {
-    OPEN,
+    NEW,
     CLOSED,
-    SOLED
+    SOLD
 }

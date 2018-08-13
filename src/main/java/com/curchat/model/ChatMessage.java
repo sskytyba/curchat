@@ -1,10 +1,17 @@
 package com.curchat.model;
 
-public class ChatMessage {
-    private MessageType type;
-    private String content;
-    private String sender;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Getter
+@Setter
+@Entity
+public class ChatMessage extends AbstractEntity {
     public enum MessageType {
         CHAT,
         JOIN,
@@ -13,27 +20,16 @@ public class ChatMessage {
         PURCHASE,
     }
 
-    public MessageType getType() {
-        return type;
-    }
+    private MessageType type;
 
-    public void setType(MessageType type) {
-        this.type = type;
-    }
+    private String content;
 
-    public String getContent() {
-        return content;
-    }
+    @ManyToOne
+    private UserAccount sender;
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    private CurrencySale sale;
 
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
+    @ManyToOne
+    private Chat chat;
 }

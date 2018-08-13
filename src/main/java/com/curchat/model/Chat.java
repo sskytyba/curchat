@@ -4,10 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import java.util.Currency;
 
-@Entity
 @Getter
 @Setter
-public class UserAccount extends AbstractEntity {
-    private String name;
+@Entity
+public class Chat extends AbstractEntity {
+    private Currency currency;
 }

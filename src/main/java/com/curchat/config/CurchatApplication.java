@@ -14,7 +14,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 		"com.curchat.controller",
 		"com.curchat.config",
 		"com.curchat.model",
-		"com.curchat.repository"
+		"com.curchat.repository",
+		"com.curchat.service"
 })
 @EntityScan("com.curchat.model")
 @EnableJpaRepositories("com.curchat.repository")

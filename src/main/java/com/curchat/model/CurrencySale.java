@@ -1,81 +1,32 @@
 package com.curchat.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.util.Currency;
 
 @Entity
+@Getter
+@Setter
 public class CurrencySale extends AbstractEntity {
 
-    @ManyToOne
-    UserAccount seller;
+    private CurrencySaleStatus status = CurrencySaleStatus.NEW;
 
     @ManyToOne
-    UserAccount buyer;
+    private UserAccount seller;
 
-    Integer amount;
+    @ManyToOne
+    private UserAccount buyer;
 
-    Currency currencyBuy;
+    private Integer amount;
 
-    Integer rate;
+    private Currency currencyBuy;
 
-    Currency currencySale;
+    private Double rate;
 
-    CurrencySaleStatus status;
-
-    public UserAccount getSeller() {
-        return seller;
-    }
-
-    public void setSeller(UserAccount seller) {
-        this.seller = seller;
-    }
-
-    public UserAccount getBuyer() {
-        return buyer;
-    }
-
-    public void setBuyer(UserAccount buyer) {
-        this.buyer = buyer;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
-    public Currency getCurrencyBuy() {
-        return currencyBuy;
-    }
-
-    public void setCurrencyBuy(Currency currencyBuy) {
-        this.currencyBuy = currencyBuy;
-    }
-
-    public Integer getRate() {
-        return rate;
-    }
-
-    public void setRate(Integer rate) {
-        this.rate = rate;
-    }
-
-    public Currency getCurrencySale() {
-        return currencySale;
-    }
-
-    public void setCurrencySale(Currency currencySale) {
-        this.currencySale = currencySale;
-    }
-
-    public CurrencySaleStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(CurrencySaleStatus status) {
-        this.status = status;
-    }
+    @OneToOne
+    private ChatMessage message;
 }
